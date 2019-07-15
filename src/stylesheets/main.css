@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+}
+
+div {
+  margin: 20px auto 0 auto;
+}
+
+div#text span.japanese {
+  display: inline;
+}
+
+div#text:hover span.japanese {
+  display: none;
+}
+
+div#text span.english {
+  display: none;
+}
+
+div#text:hover span.english {
+  display: inline;
+}
