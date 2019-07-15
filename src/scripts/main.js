@@ -4,7 +4,8 @@ function init() {
 
   api.getFullSet(5).then(words => {
     paintOnHtml([
-      template.basicAction(words),
+      // template.basicAction(words),
+      template.basicActionOnNoun(words),
     ]);
   });
 }
