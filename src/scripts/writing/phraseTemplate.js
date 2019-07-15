@@ -1,4 +1,4 @@
-ACTION_VERB_PARTICLE = ' o ';
+ACTION_VERB_PARTICLE = 'o';
 
 class PhraseTemplate {
   basicAction(w) {
@@ -6,10 +6,10 @@ class PhraseTemplate {
     const particle = this.getOne(w.verbs_particles)
 
     return {
-      japanese: this.firstUpperCase(verb.japanese) + particle.japanese,
+      japanese: `${this.firstUpperCase(verb.japanese)}${particle.japanese}`,
       english: particle.english.location == 'prefix'
-        ? this.firstUpperCase(particle.english.word) + ' ' + verb.english
-        : this.firstUpperCase(verb.english) + particle.english.word,
+        ? `${this.firstUpperCase(particle.english.word)} ${verb.english}`
+        : `${this.firstUpperCase(verb.english)}${particle.english.word}`,
     };
   }
 
@@ -19,10 +19,10 @@ class PhraseTemplate {
     const particle = this.getOne(w.verbs_particles)
 
     return {
-      japanese: this.firstUpperCase(noun.japanese) + ACTION_VERB_PARTICLE + verb.japanese + particle.japanese,
+      japanese: `${this.firstUpperCase(noun.japanese)} ${ACTION_VERB_PARTICLE} ${verb.japanese}${particle.japanese}`,
       english: particle.english.location == 'prefix'
-        ? this.firstUpperCase(particle.english.word) + ' ' + verb.english + ' ' + noun.english
-        : this.firstUpperCase(verb.english) + ' ' + noun.english + particle.english.word,
+        ? `${this.firstUpperCase(particle.english.word)} ${verb.english} ${noun.english}`
+        : `${this.firstUpperCase(verb.english)} ${noun.english}${particle.english.word}`,
     };
   }
 

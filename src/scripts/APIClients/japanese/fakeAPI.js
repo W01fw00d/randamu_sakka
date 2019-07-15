@@ -4,7 +4,7 @@ const API_URL_COUNT = 'https://api.noopschallenge.com/wordbot?count=';
 const ERROR_MSG = 'API call failed';
 
 class FakeAPI {
-  getFullSet(n) {
+  getFullSet() {
     const dictionary = new RōmajiDictionary();
     let words = dictionary.get();
 
