@@ -3,21 +3,27 @@ body {
 }
 
 div {
-  margin: 20px auto 0 auto;
+  margin: 60px auto 0 auto;
 }
 
-div#text span.romaji {
+div.phrase {
+  background-color: #DCDCDC;
+  font-size: x-large;
+}
+
+div.phrase span.romaji {
   display: inline;
 }
 
-div#text:hover span.romaji {
+
+div.phrase:hover span.romaji {
   display: none;
 }
 
-div#text span.english {
+div.phrase span.english {
   display: none;
 }
 
-div#text:hover span.english {
+div.phrase:hover span.english {
   display: inline;
 }
