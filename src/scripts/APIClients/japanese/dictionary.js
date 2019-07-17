@@ -1,26 +1,59 @@
 class Dictionary {
   get() {
     return {
+      adverbs: {
+        time: [
+          this.translation('konban', 'tonight', '今晩'),
+          this.translation('ashita', 'tomorrow', '明日'),
+          this.translation('tokidoki', 'sometimes', '時々'),
+          this.translation('mainichi', 'everyday', '毎日'),
+        ],
+        others: [
+          this.translation('seji', 'certainly'),
+        ]
+
+      },
       answers: [
         this.translation('hai, dōzo', 'yes, go ahead'),
         this.translation('īe', 'no'),
       ],
       interjections: [
-        this.translation('kara', 'therefore'),
+        //kara is therefore if it's on the phrase middle, and because if it's at the end
+        this.translation('kara', 'therefore/because'),
         this.translation('soshte', 'and'),
         this.translation('ga', 'but'),
       ],
+      pronouns: {
+        interrogative: [
+          this.translation('nani', 'what', '何'),
+          this.translation('tore', 'which one', 'どれ'),
+        ]
+      },
+      expressions: [
+        this.translation('nandesuka?', 'What is (it)?', '何ですか'),
+      ],
+
+      adjectives: [
+        this.translation('omoshiroi', 'interesting', '面白い'),
+        this.translation('oishī', 'delicious', 'おいしい'),
+      ],
+
       nouns: [
         this.translation('kamera', 'camera'),
         this.translation('dejikame', 'digital camera', 'デジカメ'),
+        this.translation('terebi', 'television', 'テレビ'),
+        this.translation('eiga', 'movie', '映画'),
+        this.translation('Konsāto', 'concert', 'コンサート'),
         this.translation('tīshatsu', 't-shirt'),
 
         this.translation('hoteru', 'hotel'),
 
+        this.translation('sandwich', 'sandoitchi', 'サンドイッチ'),
         this.translation('aisukurīmu', 'ice-cream'),
 
         this.translation('jūsu', 'juice'),
         this.translation('kōhī', 'coffee'),
+        this.translation('bīru', 'beer', 'ビール'),
       ],
       concept_nouns: [
         this.meaning('omoiyari', 'empathy', 'Empathy towards other people feelings'),
@@ -31,11 +64,9 @@ class Dictionary {
       action_verbs: [
         this.translation('tabe', 'eat'),
         this.translation('nomi', 'drink'),
-        // -mas sufix shouldn't be applied, and it's not really a verb, more like an expression
-        // this.translation('kudasai', 'Please give me'),
-      ],
-      special_verbs: [
-        this.translation('des', 'is'),
+        this.translation('mi', 'see/watch/look'),
+        this.translation('jomi', 'read'),
+        this.translation('kai', 'buy'),
       ],
       // Japanese phrases always ends with a verb, so we add the . when needed here
       verbs_particles: [
@@ -45,6 +76,11 @@ class Dictionary {
         this.particles('mas ka?', 'question', '?', 'sufix'),
         this.particles('masen ka?', 'formal proposal', ', would you?', 'sufix'),
         this.particles('masho ka?', 'proposal', ', shall we?', 'sufix'),
+      ],
+      special_verbs: [
+        this.translation('sukidesu', 'like (it)'),
+        this.translation('desu', 'is'),
+        this.translation('o kudasai', 'Please give me'),
       ],
     };
   }
