@@ -6,11 +6,11 @@ div {
   margin: 20px auto 0 auto;
 }
 
-div#text span.japanese {
+div#text span.romaji {
   display: inline;
 }
 
-div#text:hover span.japanese {
+div#text:hover span.romaji {
   display: none;
 }
 

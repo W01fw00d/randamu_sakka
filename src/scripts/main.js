@@ -22,7 +22,7 @@ function paintOnHtml(texts) {
 
 function insertIntoDiv(content) {
   return `<div class="phrase">
-    <span class="japanese">${content.japanese}</span>
+    <span class="romaji">${content.romaji}</span>
     <span class="english">${content.english}</span>
   </div>`;
 }

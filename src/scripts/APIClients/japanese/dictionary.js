@@ -1,12 +1,18 @@
-class RōmajiDictionary {
+class Dictionary {
   get() {
     return {
       answers: [
         this.translation('hai, dōzo', 'yes, go ahead'),
         this.translation('īe', 'no'),
       ],
+      interjections: [
+        this.translation('kara', 'therefore'),
+        this.translation('soshte', 'and'),
+        this.translation('ga', 'but'),
+      ],
       nouns: [
         this.translation('kamera', 'camera'),
+        this.translation('dejikame', 'digital camera', 'デジカメ'),
         this.translation('tīshatsu', 't-shirt'),
 
         this.translation('hoteru', 'hotel'),
@@ -15,6 +21,12 @@ class RōmajiDictionary {
 
         this.translation('jūsu', 'juice'),
         this.translation('kōhī', 'coffee'),
+      ],
+      concept_nouns: [
+        this.meaning('omoiyari', 'empathy', 'Empathy towards other people feelings'),
+      ],
+      proper_nouns: [
+        this.translation('nihon', 'japan'),
       ],
       action_verbs: [
         this.translation('tabe', 'eat'),
@@ -37,16 +49,25 @@ class RōmajiDictionary {
     };
   }
 
-  translation(japanese, english) {
+  translation(romaji, english, japanese = '') {
     return {
-      japanese: japanese,
+      romaji: romaji,
       english: english,
+      japanese: japanese,
     };
   }
 
-  particles(japanese, meaning, english = '', location = 'sufix') {
+  meaning(romaji, english, meaning) {
     return {
-      japanese: japanese,
+      romaji: romaji,
+      english: english,
+      meaning: meaning,
+    };
+  }
+
+  particles(romaji, meaning, english = '', location = 'sufix') {
+    return {
+      romaji: romaji,
       english: {
         meaning: meaning,
         word: english,

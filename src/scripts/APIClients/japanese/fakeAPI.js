@@ -5,7 +5,7 @@ const ERROR_MSG = 'API call failed';
 
 class FakeAPI {
   getFullSet() {
-    const dictionary = new RōmajiDictionary();
+    const dictionary = new Dictionary();
     let words = dictionary.get();
 
     const promise = new Promise((resolve, reject) => {
