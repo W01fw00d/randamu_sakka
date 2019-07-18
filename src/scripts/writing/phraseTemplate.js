@@ -1,22 +1,53 @@
+//TODO: Maybe move those particles to dictionary? on a constants atribute
 ACTION_VERB_PARTICLE = 'o';
-WITH = 'to';
+WITH = {
+  english: 'with',
+  romaji: 'to',
+  kana: 'と'
+};
 
 COUNTABLE_DETERMINANT = 'a';
 
 class PhraseTemplate {
   randomStructure(w) {
+    let text = this.addPhrase(w);
+
+    if (this.randomCondition()) {
+      text = this.addCompoundPhrase(text, w);
+    }
+
+    return this.correctOrtography(text);
+  }
+
+  addPhrase(w) {
     let text = {
       romaji: '',
       english: '',
     };
 
+    //TODO: random order for this adds when possible
     if (this.randomCondition()) {
       text = this.addActionOnNoun(text, w);
     }
+    if (this.randomCondition()) {
+      text = this.addActionWithArticle(text, w);
+    }
+    if (this.randomCondition()) {
+      text = this.addTimeAdverb(text, w);
+    }
 
-    text = this.addBasicAction(text, w);
+    return text = this.addBasicAction(text, w);
+  }
 
-    return this.correctOrtography(text);
+  addCompoundPhrase(text, w) {
+    const interjection = this.getOne(w.interjections);
+
+    const new_phrase = this.addPhrase(w);
+
+    text.romaji = `${this.addWhitespaceAtEnd(text.romaji)}${interjection.romaji} ${new_phrase.romaji}`;
+    text.english = `${this.addWhitespaceAtEnd(text.english)}${interjection.english} ${new_phrase.english}`;
+
+    return text;
   }
 
   addActionOnNoun(text, w) {
@@ -25,7 +56,25 @@ class PhraseTemplate {
     text.romaji = `${noun.japanese.romaji} ${ACTION_VERB_PARTICLE}${this.addWhitespaceAtBegin(text.romaji)}`;
     text.english = `${this.addWhitespaceAtEnd(text.english)}${
       noun.english.countable ? ' ' + COUNTABLE_DETERMINANT + ' ' : ''
-    }${noun.english.word}`
+    }${noun.english.word}`;
+
+    return text;
+  }
+
+  addActionWithArticle(text, w) {
+    const article = this.getOne(w.articles);
+
+    text.romaji = `${article.romaji} ${WITH.romaji}${this.addWhitespaceAtBegin(text.romaji)}`;
+    text.english = `${this.addWhitespaceAtEnd(text.english)}${WITH.english} ${article.english}`;
+
+    return text;
+  }
+
+  addTimeAdverb(text, w) {
+    const adverb = this.getOne(w.adverbs.time);
+
+    text.romaji = `${adverb.romaji}${this.addWhitespaceAtBegin(text.romaji)}`;
+    text.english = `${this.addWhitespaceAtEnd(text.english)}${adverb.english}`;
 
     return text;
   }
@@ -40,20 +89,12 @@ class PhraseTemplate {
         this.addWhitespaceAtBegin(text.english)
       }${particle.english.interrogative ? '?' : ''}`;
 
-    console.log(text.english);
-
     return text;
   }
 
-  //NOT USED
-  withPerson(w) {
-    return `${this.getOne(w.articles)} ${WITH}`;
-  }
 
+  //TODO: Auxiliar functions, move to other class
   addWhitespaceAtBegin(string) {
-    if (string) {
-      console.log(string);
-    }
     return `${string ? ' ' : ''}${string}`;
   }
 

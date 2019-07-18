@@ -4,7 +4,7 @@ class Dictionary {
       articles: [
         this.translation('kare', 'he', '彼'),
         this.translation('kanojo', 'she', '彼女'),
-        this.translation('watashi', 'I', '私'),
+        this.translation('watashi', 'I/me', '私'),
       ],
       adverbs: {
         time: [
@@ -15,9 +15,9 @@ class Dictionary {
         ],
         others: [
           this.translation('seji', 'certainly'),
-        ]
-
+        ],
       },
+      //TODO: implement a question/answer template
       answers: [
         this.translation('hai, dōzo', 'yes, go ahead'),
         this.translation('īe', 'no'),
@@ -27,9 +27,9 @@ class Dictionary {
         this.translation('kara', 'therefore/because'),
         this.translation('soshite', 'and', 'そして'),
         this.translation('ga', 'but'),
-        this.translation('to', 'with', 'と'),
+        // this.translation('to', 'with', 'と'),
         //'wa' is used to remark the contrast between two phrases united by a 'ga'
-        this.translation('wa', '(remarked)'),
+        // this.translation('wa', '(remarked)'),
       ],
       pronouns: {
         interrogative: [
@@ -64,13 +64,11 @@ class Dictionary {
         this.noun('shi-goto', 'しごと', 'work', 'uncountable'),
         this.noun('rirakkusu', 'リラックス', 'relax', 'uncountable'),
 
-        this.noun('nihon', '日本', 'Japan', 'uncountable'),
-
         this.noun('kamera', 'カメラ', 'camera'),
         this.noun('dejikame', 'デジカメ', 'digital camera'),
 
-        this.noun('television', 'テレビ', 'terebi'),
-        this.noun('phone', '電話', 'denwa'),
+        this.noun('terebi', 'テレビ', 'television'),
+        this.noun('denwa', '電話', 'phone'),
         this.noun('tīshatsu', 'Tシャツ', 'T-shirt'),
 
         this.noun('eiga', '映画', 'movie'),
@@ -79,7 +77,7 @@ class Dictionary {
         this.noun('hoteru', 'ホテル', 'hotel'),
         this.noun('depāto', 'デパート', 'department store'),
 
-        this.noun('sandwich', 'サンドイッチ', 'sandoitchi'),
+        this.noun('sandoitchi', 'サンドイッチ', 'sandwich'),
         this.noun('aisukurīmu', 'アイスクリーム', 'ice-cream'),
 
         this.noun('jūsu', 'ジュース', 'juice'),
@@ -90,7 +88,7 @@ class Dictionary {
         this.meaning('omoiyari', 'empathy', 'Empathy towards other people feelings'),
       ],
       proper_nouns: [
-        this.translation('nihon', 'japan'),
+        this.noun('nihon', '日本', 'Japan', 'uncountable'),
       ],
       action_verbs: [
         this.translation('tabe', 'eat'),
@@ -121,6 +119,7 @@ class Dictionary {
     };
   }
 
+  //TODO: Auxiliar functions, move to other class
   translation(romaji, english, japanese = '') {
     return {
       romaji: romaji,
