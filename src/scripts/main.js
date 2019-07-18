@@ -4,8 +4,9 @@ function init() {
 
   api.getFullSet().then(words => {
     paintOnHtml([
-      template.basicAction(words),
-      template.basicActionOnNoun(words),
+      template.randomStructure(words),
+      // template.basicAction(words),
+      // template.basicActionOnNoun(words),
     ]);
   });
 }

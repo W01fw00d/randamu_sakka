@@ -73,7 +73,7 @@ class Dictionary {
         this.translation('shi-goto', 'work', 'しごと'),
         this.translation('rirakkusu', 'relax', 'リラックス'),
 
-        this.translation('nihon', 'japan', '日本'),
+        this.translation('nihon', 'Japan', '日本'),
 
         this.translation('hoteru', 'hotel'),
         this.translation('depāto', 'department store', 'デパート'),
@@ -102,15 +102,14 @@ class Dictionary {
       ],
       // Japanese phrases always ends with a verb, so we add the . when needed here
       verbs_particles: [
-        this.particles('mas.', 'affirmation'),
-        this.particles('masen.', 'negation', 'don\'t', 'prefix'),
-        this.particles('masho.', 'proposal', 'let\'s', 'prefix'),
-        this.particles('mas ka?', 'question', '?', 'sufix'),
-        this.particles('masen ka?', 'formal proposal', ', would you?', 'sufix'),
-        this.particles('masho ka?', 'proposal', ', shall we?', 'sufix'),
-        this.particles('tai des', 'desire', ', I want to ', 'prefix'),
-        //'tai des ka?' affects beginning and end of english translated phrase
-        this.particles('tai des ka?', 'desire question', ', Do you want to ', 'prefix'),
+        this.particles('mas', 'affirmation'),
+        this.particles('masen', 'negation', 'don\'t'),
+        this.particles('masho', 'proposal', 'let\'s'),
+        this.particles('mas ka?', 'question', '', 'interrogative'),
+        this.particles('masen ka?', 'formal proposal', 'would you', 'interrogative'),
+        this.particles('masho ka?', 'proposal', 'shall we', 'interrogative'),
+        this.particles('tai des', 'desire', 'I want to'),
+        this.particles('tai des ka?', 'desire question', 'Do you want to ', 'interrogative'),
       ],
       special_verbs: [
         this.translation('sukidesu', 'like (it)'),
@@ -136,13 +135,13 @@ class Dictionary {
     };
   }
 
-  particles(romaji, meaning, english = '', location = 'sufix') {
+  particles(romaji, meaning, english = '', type = '') {
     return {
       romaji: romaji,
       english: {
         meaning: meaning,
         word: english,
-        location: location,
+        interrogative: type == 'interrogative',
       },
     };
   }

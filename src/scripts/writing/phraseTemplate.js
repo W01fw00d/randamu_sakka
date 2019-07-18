@@ -1,29 +1,89 @@
 ACTION_VERB_PARTICLE = 'o';
+WITH = 'to';
 
 class PhraseTemplate {
-  basicAction(w) {
-    const verb = this.getOne(w.action_verbs);
-    const particle = this.getOne(w.verbs_particles)
-
-    return {
-      romaji: `${this.firstUpperCase(verb.romaji)}${particle.romaji}`,
-      english: particle.english.location == 'prefix'
-        ? `${this.firstUpperCase(particle.english.word)} ${verb.english}`
-        : `${this.firstUpperCase(verb.english)}${particle.english.word}`,
+  randomStructure(w) {
+    let text = {
+      romaji: '',
+      english: '',
     };
+
+    if (this.randomCondition()) {
+      text = this.addActionOnNoun(text, w);
+    }
+
+    text = this.addBasicAction(text, w);
+
+    return this.correctOrtography(text);
   }
 
-  basicActionOnNoun(w) {
+  addActionOnNoun(text, w) {
     const noun = this.getOne(w.nouns);
-    const verb = this.getOne(w.action_verbs);
-    const particle = this.getOne(w.verbs_particles)
 
-    return {
-      romaji: `${this.firstUpperCase(noun.romaji)} ${ACTION_VERB_PARTICLE} ${verb.romaji}${particle.romaji}`,
-      english: particle.english.location == 'prefix'
-        ? `${this.firstUpperCase(particle.english.word)} ${verb.english} ${noun.english}`
-        : `${this.firstUpperCase(verb.english)} ${noun.english}${particle.english.word}`,
-    };
+    text.romaji = `${noun.romaji} ${ACTION_VERB_PARTICLE}${this.addWhitespaceAtBegin(text.romaji)}`;
+    text.english = `${this.addWhitespaceAtEnd(text.english)}${noun.english}`
+
+    return text;
+  }
+
+  addBasicAction(text, w) {
+    const verb = this.getOne(w.action_verbs);
+    const particle = this.getOne(w.verbs_particles);
+
+    text.romaji = `${this.addWhitespaceAtEnd(text.romaji)}${verb.romaji}${particle.romaji}`;
+    text.english =
+      `${this.addWhitespaceAtEnd(particle.english.word)}${verb.english}${
+        this.addWhitespaceAtBegin(text.english)
+      }${particle.english.interrogative ? '?' : ''}`;
+
+    console.log(text.english);
+
+    return text;
+  }
+
+  //NOT USED
+  withPerson(w) {
+    return `${this.getOne(w.articles)} ${WITH}`;
+  }
+
+  addWhitespaceAtBegin(string) {
+    if (string) {
+      console.log(string);
+    }
+    return `${string ? ' ' : ''}${string}`;
+  }
+
+  addWhitespaceAtEnd(string) {
+    return `${string}${string ? ' ' : ''}`;
+  }
+
+  correctOrtography(text) {
+    text = this.addEndingPointToPhrases(text);
+    text = this.firstPhraseLetterToUppercase(text);
+
+    return text;
+  }
+
+  addEndingPointToPhrases(text) {
+    text.romaji = this.addEndingPoint(text.romaji);
+    text.english = this.addEndingPoint(text.english);
+
+    return text;
+  }
+
+  addEndingPoint(string) {
+    if (string.charAt(string.length - 1) != '?') {
+      string = `${string}.`
+    }
+
+    return string;
+  }
+
+  firstPhraseLetterToUppercase(text) {
+    text.romaji = this.firstUpperCase(text.romaji);
+    text.english = this.firstUpperCase(text.english);
+
+    return text;
   }
 
   firstUpperCase(string) {
@@ -32,5 +92,9 @@ class PhraseTemplate {
 
   getOne(array) {
     return array[Math.floor(Math.random() * array.length)];
+  }
+
+  randomCondition() {
+    return Math.floor(Math.random() * 2);
   }
 }
