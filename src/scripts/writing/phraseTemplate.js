@@ -1,6 +1,8 @@
 ACTION_VERB_PARTICLE = 'o';
 WITH = 'to';
 
+COUNTABLE_DETERMINANT = 'a';
+
 class PhraseTemplate {
   randomStructure(w) {
     let text = {
@@ -20,8 +22,10 @@ class PhraseTemplate {
   addActionOnNoun(text, w) {
     const noun = this.getOne(w.nouns);
 
-    text.romaji = `${noun.romaji} ${ACTION_VERB_PARTICLE}${this.addWhitespaceAtBegin(text.romaji)}`;
-    text.english = `${this.addWhitespaceAtEnd(text.english)}${noun.english}`
+    text.romaji = `${noun.japanese.romaji} ${ACTION_VERB_PARTICLE}${this.addWhitespaceAtBegin(text.romaji)}`;
+    text.english = `${this.addWhitespaceAtEnd(text.english)}${
+      noun.english.countable ? ' ' + COUNTABLE_DETERMINANT + ' ' : ''
+    }${noun.english.word}`
 
     return text;
   }

@@ -58,32 +58,33 @@ class Dictionary {
       ],
 
       nouns: [
-        this.translation('kamera', 'camera'),
-        this.translation('dejikame', 'digital camera', 'デジカメ'),
-        this.translation('terebi', 'television', 'テレビ'),
-        this.translation('denwa', 'phone', '電話'),
-        this.translation('tīshatsu', 't-shirt'),
+        this.noun('gorufu', 'ゴルフ', 'golf', 'uncountable'),
+        this.noun('tenisu', 'テニス', 'tennis', 'uncountable'),
 
-        this.translation('eiga', 'movie', '映画'),
-        this.translation('Konsāto', 'concert', 'コンサート'),
+        this.noun('shi-goto', 'しごと', 'work', 'uncountable'),
+        this.noun('rirakkusu', 'リラックス', 'relax', 'uncountable'),
 
-        this.translation('gorufu', 'golf', 'ゴルフ'),
-        this.translation('tenisu', 'tennis', 'テニス'),
+        this.noun('nihon', '日本', 'Japan', 'uncountable'),
 
-        this.translation('shi-goto', 'work', 'しごと'),
-        this.translation('rirakkusu', 'relax', 'リラックス'),
+        this.noun('kamera', 'カメラ', 'camera'),
+        this.noun('dejikame', 'デジカメ', 'digital camera'),
 
-        this.translation('nihon', 'Japan', '日本'),
+        this.noun('television', 'テレビ', 'terebi'),
+        this.noun('phone', '電話', 'denwa'),
+        this.noun('tīshatsu', 'Tシャツ', 'T-shirt'),
 
-        this.translation('hoteru', 'hotel'),
-        this.translation('depāto', 'department store', 'デパート'),
+        this.noun('eiga', '映画', 'movie'),
+        this.noun('Konsāto', 'コンサート', 'concert'),
 
-        this.translation('sandwich', 'sandoitchi', 'サンドイッチ'),
-        this.translation('aisukurīmu', 'ice-cream'),
+        this.noun('hoteru', 'ホテル', 'hotel'),
+        this.noun('depāto', 'デパート', 'department store'),
 
-        this.translation('jūsu', 'juice'),
-        this.translation('kōhī', 'coffee'),
-        this.translation('bīru', 'beer', 'ビール'),
+        this.noun('sandwich', 'サンドイッチ', 'sandoitchi'),
+        this.noun('aisukurīmu', 'アイスクリーム', 'ice-cream'),
+
+        this.noun('jūsu', 'ジュース', 'juice'),
+        this.noun('kōhī', 'コーヒー', 'coffee'),
+        this.noun('bīru', 'ビール', 'beer'),
       ],
       concept_nouns: [
         this.meaning('omoiyari', 'empathy', 'Empathy towards other people feelings'),
@@ -98,6 +99,7 @@ class Dictionary {
         this.translation('jomi', 'read'),
         this.translation('kai', 'buy'),
         this.translation('shi', 'do/play'),
+        //Bug: shall be 'go to' when a place is defined, 'go' when no place defined
         this.translation('iki', 'go to'),
       ],
       // Japanese phrases always ends with a verb, so we add the . when needed here
@@ -132,6 +134,19 @@ class Dictionary {
       romaji: romaji,
       english: english,
       meaning: meaning,
+    };
+  }
+
+  noun(romaji, kana, english, type = 'countable') {
+    return {
+      japanese: {
+        romaji: romaji,
+        kana: kana,
+      },
+      english: {
+        word: english,
+        countable: type == 'countable',
+      },
     };
   }
 
