@@ -2,16 +2,22 @@ class Dictionary {
   get() {
     return {
       articles: [
+        //TODO change translation order to romaji, kana and english. Add missing kanas.
         this.translation('kare', 'he', '彼'),
         this.translation('kanojo', 'she', '彼女'),
         this.translation('watashi', 'I/me', '私'),
       ],
       adverbs: {
+        //TODO: Relate time adverbs with verbs time sufixes
         time: [
+          this.translation('kinō', 'yesterday', '昨日'),
+          this.translation('kyō', 'today', '今日'),
           this.translation('konban', 'tonight', '今晩'),
           this.translation('ashita', 'tomorrow', '明日'),
+          this.translation('saikin', 'nowadays', '最近'),
           this.translation('tokidoki', 'sometimes', '時々'),
           this.translation('mainichi', 'everyday', '毎日'),
+          this.translation('hajimete', 'for the first time', '初めて'),
         ],
         others: [
           this.translation('seji', 'certainly'),
@@ -26,10 +32,15 @@ class Dictionary {
         //kara is therefore if it's on the phrase middle, and because if it's at the end
         this.translation('kara', 'therefore/because'),
         this.translation('soshite', 'and', 'そして'),
+        this.translation('ka', 'or', 'か'),
+        //TODO: develop a special template for ga. When doing a constrast on two phrases, the contrasted item must be followed by 'wa'
         this.translation('ga', 'but'),
         // this.translation('to', 'with', 'と'),
         //'wa' is used to remark the contrast between two phrases united by a 'ga'
+        //it's also used to indicate who is the doer of the action
         // this.translation('wa', '(remarked)'),
+        //TODO: define ni as particle for go to places and for calling to a person
+
       ],
       pronouns: {
         interrogative: [
@@ -38,6 +49,8 @@ class Dictionary {
           this.translation('doko', 'where', 'どこ'),
           this.translation('dōshite', 'why', 'どうして'),
         ],
+        //TODO: to use in front of 'o', for example 'kore o tabemas'
+        // for ni, we need koko, soko y asoko: ex: 'koko ni ikimas'
         demonstrative: [
           this.translation('kore', 'this', 'これ'),
           this.translation('sore', 'that', 'それ'),
@@ -64,11 +77,13 @@ class Dictionary {
         this.noun('shi-goto', 'しごと', 'work', 'uncountable'),
         this.noun('rirakkusu', 'リラックス', 'relax', 'uncountable'),
 
+        this.noun('koin', 'コイン', 'coin'),
         this.noun('kamera', 'カメラ', 'camera'),
         this.noun('dejikame', 'デジカメ', 'digital camera'),
 
         this.noun('terebi', 'テレビ', 'television'),
         this.noun('denwa', '電話', 'phone'),
+        this.noun('keitai', '携帯', 'mobile phone'),
         this.noun('tīshatsu', 'Tシャツ', 'T-shirt'),
 
         this.noun('eiga', '映画', 'movie'),
@@ -83,12 +98,21 @@ class Dictionary {
         this.noun('jūsu', 'ジュース', 'juice'),
         this.noun('kōhī', 'コーヒー', 'coffee'),
         this.noun('bīru', 'ビール', 'beer'),
+
+        this.noun('reijou', '令嬢', 'daughter'),
+        this.noun('kodomo', '子供', 'child'),
       ],
       concept_nouns: [
         this.meaning('omoiyari', 'empathy', 'Empathy towards other people feelings'),
       ],
       proper_nouns: [
         this.noun('nihon', '日本', 'Japan', 'uncountable'),
+        this.noun('gaburieru', 'ガブリエル', 'Gabriel', 'uncountable'),
+        this.noun('maruta', 'マルタ', 'Marta', 'uncountable'),
+        this.noun('tanaka', '田中', 'Tanaka', 'uncountable'),
+        this.noun('suzuki', '鈴木', 'Suzuki', 'uncountable'),
+        this.noun('akira', '晶', 'Akira', 'uncountable'),
+
       ],
       action_verbs: [
         this.translation('tabe', 'eat'),
@@ -100,20 +124,24 @@ class Dictionary {
         //Bug: shall be 'go to' when a place is defined, 'go' when no place defined
         this.translation('iki', 'go to'),
       ],
-      // Japanese phrases always ends with a verb, so we add the . when needed here
+      //TODO: Change back to verbs_sufixes, as in japanese is always like that
       verbs_particles: [
         this.particles('mas', 'affirmation'),
         this.particles('masen', 'negation', 'don\'t'),
         this.particles('masho', 'proposal', 'let\'s'),
+        this.particles('mashta', 'past', 'in the past,'),
+        this.particles('masen deshita', 'past negation', 'didn\'t'),
+        this.particles('tai des', 'desire', 'I want to'),
         this.particles('mas ka?', 'question', '', 'interrogative'),
         this.particles('masen ka?', 'formal proposal', 'would you', 'interrogative'),
         this.particles('masho ka?', 'proposal', 'shall we', 'interrogative'),
-        this.particles('tai des', 'desire', 'I want to'),
+        this.particles('mashta ka?', 'past question', 'in the past,', 'interrogative'),
         this.particles('tai des ka?', 'desire question', 'Do you want to ', 'interrogative'),
       ],
       special_verbs: [
         this.translation('sukidesu', 'like (it)'),
         this.translation('desu', 'is'),
+        this.translation('deshita', 'was'),
         this.translation('o kudasai', 'Please give me'),
       ],
     };

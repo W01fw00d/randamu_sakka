@@ -51,6 +51,7 @@ class PhraseTemplate {
   }
 
   addActionOnNoun(text, w) {
+    //TODO: we can add articles here too, actions can be done on them
     const noun = this.getOne(w.nouns);
 
     text.romaji = `${noun.japanese.romaji} ${ACTION_VERB_PARTICLE}${this.addWhitespaceAtBegin(text.romaji)}`;
