@@ -1,9 +1,20 @@
 //TODO: Maybe move those particles to dictionary? on a constants atribute
 ACTION_VERB_PARTICLE = 'o';
+// Prepositions
 WITH = {
   english: 'with',
   romaji: 'to',
   kana: 'と'
+};
+TO = {
+  english: 'to',
+  romaji: 'ni',
+  kana: 'に',
+};
+AT = {
+  english: 'at',
+  romaji: 'de',
+  kana: 'で',
 };
 
 COUNTABLE_DETERMINANT = 'a';
@@ -63,7 +74,7 @@ class PhraseTemplate {
   }
 
   addActionWithArticle(text, w) {
-    const article = this.getOne(w.articles);
+    const article = this.getOne(w.pronouns.personal);
 
     text.romaji = `${article.romaji} ${WITH.romaji}${this.addWhitespaceAtBegin(text.romaji)}`;
     text.english = `${this.addWhitespaceAtEnd(text.english)}${WITH.english} ${article.english}`;

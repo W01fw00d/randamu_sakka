@@ -1,12 +1,21 @@
 class Dictionary {
   get() {
+    //TODO change translation order to romaji, kana and english. Add missing kanas.
     return {
-      articles: [
-        //TODO change translation order to romaji, kana and english. Add missing kanas.
-        this.translation('kare', 'he', '彼'),
-        this.translation('kanojo', 'she', '彼女'),
-        this.translation('watashi', 'I/me', '私'),
-      ],
+      determiners: {
+        demonstrative: [
+          this.translation('kono', 'this', 'この'),
+          this.translation('sono', 'that', 'その'),
+          this.translation('ano', 'that over there', 'アの'),
+        ],
+        possesives: [
+          this.translation('kare', 'he', '彼'),
+          this.translation('kanojo', 'she', '彼女'),
+          this.translation('watashi', 'I/me', '私'),
+          this.translation('anata', 'you', 'アナタ'),
+          this.translation('karera', 'they', '彼ら'),
+        ],
+      },
       adverbs: {
         //TODO: Relate time adverbs with verbs time sufixes
         time: [
@@ -43,9 +52,16 @@ class Dictionary {
 
       ],
       pronouns: {
+        personal: [
+          this.translation('kare', 'he/him', '彼'),
+          this.translation('kanojo', 'she/her', '彼女'),
+          this.translation('watashi', 'I/me', '私'),
+          this.translation('anata', 'you', 'アナタ'),
+          this.translation('karera', 'they', '彼ら'),
+        ],
         interrogative: [
           this.translation('nani', 'what', '何'),
-          this.translation('tore', 'which one', 'どれ'),
+          this.translation('dore', 'which one', 'どれ'),
           this.translation('doko', 'where', 'どこ'),
           this.translation('dōshite', 'why', 'どうして'),
         ],
@@ -55,7 +71,7 @@ class Dictionary {
           this.translation('kore', 'this', 'これ'),
           this.translation('sore', 'that', 'それ'),
           this.translation('āre', 'that over there', 'アーレ'),
-        ]
+        ],
       },
       expressions: [
         this.translation('nandesuka?', 'What is (it)?', '何ですか'),
@@ -68,6 +84,8 @@ class Dictionary {
         this.translation('kowai', 'scary', '怖い'),
 
         this.translation('nemui', 'sleepy', '眠い'),
+        this.translation('hazukashī', 'embarrassed', '恥ずかしい'),
+
       ],
 
       nouns: [
@@ -77,6 +95,7 @@ class Dictionary {
         this.noun('shi-goto', 'しごと', 'work', 'uncountable'),
         this.noun('rirakkusu', 'リラックス', 'relax', 'uncountable'),
 
+        this.noun('miyage', '土産', 'present'),
         this.noun('koin', 'コイン', 'coin'),
         this.noun('kamera', 'カメラ', 'camera'),
         this.noun('dejikame', 'デジカメ', 'digital camera'),
@@ -86,24 +105,54 @@ class Dictionary {
         this.noun('keitai', '携帯', 'mobile phone'),
         this.noun('tīshatsu', 'Tシャツ', 'T-shirt'),
 
+        this.noun('sofutō', 'ソフト', 'software'),
+        this.noun('kokuhaku', '告白', 'confession'),
+        this.noun('ai', '愛', 'love'),
+
         this.noun('eiga', '映画', 'movie'),
         this.noun('Konsāto', 'コンサート', 'concert'),
 
+        this.noun('mado', '窓', 'window'),
+        this.noun('tsukue', '机', 'desk'),
+        this.noun('isu', '椅子', 'chair'),
+        this.noun('daidokoro', '台所', 'kitchen'),
+
+        this.noun('gakkō', '学校', 'school'),
+        this.noun('jaisha', '会社', 'company'),
         this.noun('hoteru', 'ホテル', 'hotel'),
         this.noun('depāto', 'デパート', 'department store'),
 
+        this.noun('yasai', '野菜', 'vegetables'),
+        this.noun('gohan', 'ご飯', 'rice/meal'),
         this.noun('sandoitchi', 'サンドイッチ', 'sandwich'),
         this.noun('aisukurīmu', 'アイスクリーム', 'ice-cream'),
 
+        this.noun('mizu', '水', 'water'),
+        this.noun('ocha', 'お茶', 'tea'),
         this.noun('jūsu', 'ジュース', 'juice'),
         this.noun('kōhī', 'コーヒー', 'coffee'),
         this.noun('bīru', 'ビール', 'beer'),
 
+        this.noun('gakusei', '学生', 'student'),
+
+        this.noun('petto', 'ペット', 'pet'),
+        this.noun('inu', '犬', 'dog'),
+        this.noun('neko', 'ネコ', 'cat'),
+        this.noun('tori', '鳥', 'bird'),
+
+        this.noun('mother', '母', '(own) mother'),
+        this.noun('okāsan', 'お母', '(other\'s) mother'),
+        this.noun('chichi', '父', '(own) father'),
+        this.noun('otōsan', 'お父さん', '(other\'s) father'),
+
         this.noun('reijou', '令嬢', 'daughter'),
         this.noun('kodomo', '子供', 'child'),
+
+        // this.noun('namae', '名前', 'name'),
       ],
       concept_nouns: [
         this.meaning('omoiyari', 'empathy', 'Empathy towards other people feelings'),
+        this.meaning('女心/On\'nagokoro', 'woman\'s heart', 'The way a woman\'s mind works, traditionally'),
       ],
       proper_nouns: [
         this.noun('nihon', '日本', 'Japan', 'uncountable'),
