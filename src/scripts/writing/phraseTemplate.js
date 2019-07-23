@@ -12,7 +12,7 @@ TO = {
   kana: 'に',
 };
 AT = {
-  english: 'at',
+  english: 'in/at',
   romaji: 'de',
   kana: 'で',
 };

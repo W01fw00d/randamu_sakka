@@ -53,11 +53,16 @@ class Dictionary {
       ],
       pronouns: {
         personal: [
-          this.translation('kare', 'he/him', '彼'),
-          this.translation('kanojo', 'she/her', '彼女'),
           this.translation('watashi', 'I/me', '私'),
           this.translation('anata', 'you', 'アナタ'),
-          this.translation('karera', 'they', '彼ら'),
+          this.translation('kare', 'he/him', '彼'),
+          this.translation('kanojo', 'she/her', '彼女'),
+
+          this.translation('watashi-tachi', 'we', '私たち'),
+          this.translation('anata-tachi', 'you (plural)', 'あなたたち'),
+          this.translation('karera', 'they (men)', '彼ら'),
+          this.translation('kanojora', 'they (women)', '彼女ら'),
+
         ],
         interrogative: [
           this.translation('nani', 'what', '何'),
@@ -78,6 +83,7 @@ class Dictionary {
       ],
 
       adjectives: [
+        this.translation('sugoi', 'great', 'すごい'),
         this.translation('omoshiroi', 'interesting', '面白い'),
         this.translation('oishī', 'delicious', 'おいしい'),
         this.translation('kawaii', 'cute', '可愛い'),
@@ -85,7 +91,7 @@ class Dictionary {
 
         this.translation('nemui', 'sleepy', '眠い'),
         this.translation('hazukashī', 'embarrassed', '恥ずかしい'),
-
+        this.translation('abunai', 'dangerous', '危ない'),
       ],
 
       nouns: [
@@ -111,6 +117,7 @@ class Dictionary {
 
         this.noun('eiga', '映画', 'movie'),
         this.noun('Konsāto', 'コンサート', 'concert'),
+        this.noun('shukudai', '宿題', 'homework'),
 
         this.noun('mado', '窓', 'window'),
         this.noun('tsukue', '机', 'desk'),
@@ -127,6 +134,7 @@ class Dictionary {
         this.noun('sandoitchi', 'サンドイッチ', 'sandwich'),
         this.noun('aisukurīmu', 'アイスクリーム', 'ice-cream'),
 
+        this.noun('nomimono', '飲み物', 'drink'),
         this.noun('mizu', '水', 'water'),
         this.noun('ocha', 'お茶', 'tea'),
         this.noun('jūsu', 'ジュース', 'juice'),
@@ -145,12 +153,16 @@ class Dictionary {
         this.noun('chichi', '父', '(own) father'),
         this.noun('otōsan', 'お父さん', '(other\'s) father'),
 
+        this.noun('tomodachi', '友達', 'friend'),
+        this.noun('teki', '敵', 'enemy'),
+        this.noun('bengoshi', '弁護士', 'lawyer'),
         this.noun('reijou', '令嬢', 'daughter'),
         this.noun('kodomo', '子供', 'child'),
 
         // this.noun('namae', '名前', 'name'),
       ],
       concept_nouns: [
+        this.meaning('kizuna', 'bound', 'Union between people'),
         this.meaning('omoiyari', 'empathy', 'Empathy towards other people feelings'),
         this.meaning('女心/On\'nagokoro', 'woman\'s heart', 'The way a woman\'s mind works, traditionally'),
       ],
@@ -161,7 +173,6 @@ class Dictionary {
         this.noun('tanaka', '田中', 'Tanaka', 'uncountable'),
         this.noun('suzuki', '鈴木', 'Suzuki', 'uncountable'),
         this.noun('akira', '晶', 'Akira', 'uncountable'),
-
       ],
       action_verbs: [
         this.translation('tabe', 'eat'),
@@ -172,6 +183,7 @@ class Dictionary {
         this.translation('shi', 'do/play'),
         //Bug: shall be 'go to' when a place is defined, 'go' when no place defined
         this.translation('iki', 'go to'),
+        // this.translation('ii', 'is called'), //いいます
       ],
       //TODO: Change back to verbs_sufixes, as in japanese is always like that
       verbs_particles: [
